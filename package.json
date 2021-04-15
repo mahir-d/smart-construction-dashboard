@@ -1,19 +1,26 @@
 {
-  "name": "smart-construction-dashboard",
-  "version": "1.0.0",
-  "description": "Smart dashboard to add, edit, delete a catlog of materials",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mahir-d/smart-construction-dashboard.git"
-  },
-  "author": "Mahir Dhall",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mahir-d/smart-construction-dashboard/issues"
-  },
-  "homepage": "https://github.com/mahir-d/smart-construction-dashboard#readme"
+    "name": "smart-construction-dashboard",
+    "version": "1.0.0",
+    "description": "Smart dashboard to add, edit, delete a catlog of materials",
+    "main": "app.js",
+    "scripts": {
+        "start": "nodemon app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mahir-d/smart-construction-dashboard.git"
+    },
+    "author": "Mahir Dhall",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/mahir-d/smart-construction-dashboard/issues"
+    },
+    "homepage": "https://github.com/mahir-d/smart-construction-dashboard#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.7"
+    }
 }
