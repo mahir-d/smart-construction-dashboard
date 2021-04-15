@@ -1,0 +1,19 @@
+{
+  "name": "smart-construction-dashboard",
+  "version": "1.0.0",
+  "description": "Smart dashboard to add, edit, delete a catlog of materials",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahir-d/smart-construction-dashboard.git"
+  },
+  "author": "Mahir Dhall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahir-d/smart-construction-dashboard/issues"
+  },
+  "homepage": "https://github.com/mahir-d/smart-construction-dashboard#readme"
+}
