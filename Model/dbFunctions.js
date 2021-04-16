@@ -15,12 +15,12 @@ const dbQueries = {
 const createTable = async (tableName) => {
     const client = await pool.connect();
     const query = `
-    CREATE TABLE ${tableName} (
+    CREATE TABLE $1 (
         ${dbQueries[tableName]}
     );`;
 
     try {
-        const res = await client.query(query);
+        const res = await client.query(query, [tableName]);
         return `Table ${tableName} is successfully created`;
     } catch (err) {
         if (err.code === "42P07") {

@@ -9,12 +9,26 @@ const createSite = async () => {
     const newSiteId = uuidv4();
 
     const client = await pool.connect();
-    const query = `INSERT INTO site1 (site_id) VALUES ($1);`;
+    const query = `INSERT INTO site (site_id) VALUES ($1);`;
 
     try {
         await client.query(query, [newSiteId]);
         return `Site ${newSiteId} is successfully created`;
     } catch (err) {
+        throw Error(err.stack);
+    }
+};
+
+const getAllSites = async () => {
+    const client = await pool.connect();
+    const query = `SELECT * FROM site`;
+
+    try {
+        const res = await client.query(query);
+        return res.rows.map((site) => {
+            return site.site_id;
+        });
+    } catch (error) {
         throw Error(err.stack);
     }
 };
@@ -27,10 +41,10 @@ const createSite = async () => {
 const deleteSite = async (siteId) => {
     const client = await pool.connect();
 
-    const query = `DELETE FROM site1 WHERE site_id = '${siteId}'`;
+    const query = `DELETE FROM site1 WHERE site_id = $1`;
 
     try {
-        const res = await client.query(query);
+        const res = await client.query(query, [siteId]);
         if (res.rowCount === 1) {
             return `Site with id ${siteId} deleted`;
         } else {
@@ -41,4 +55,4 @@ const deleteSite = async (siteId) => {
     }
 };
 
-module.exports = { createSite, deleteSite };
+module.exports = { createSite, deleteSite, getAllSites };

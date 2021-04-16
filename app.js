@@ -3,7 +3,7 @@ const app = express();
 const port = 3001;
 var index = require("./Controller/index");
 require("dotenv").config();
-
+app.use(express.json());
 app.use("/", index);
 
 app.listen(port, () => {
