@@ -1,3 +1,6 @@
+/**
+ * This file contains routes to create table in the database
+ */
 var express = require("express");
 var router = express.Router();
 const dbFunctions = require("../Model/dbFunctions");
