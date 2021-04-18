@@ -3,6 +3,8 @@
  */
 
 const pool = require("./connection");
+const pgtools = require("pgtools");
+require("dotenv").config();
 
 const dbQueries = {
     site: "site_id uuid PRIMARY KEY",
@@ -48,8 +50,7 @@ const deleteTable = async (tableName) => {
         return `Table ${tableName} is successfully deleted`;
     } catch (error) {
         if (error.code === "42P01") {
-            console.log("Table site does not exists");
-            return;
+            return `Table ${tableName} does not exists`;
         }
         throw Error(err.stack);
     } finally {
@@ -57,4 +58,28 @@ const deleteTable = async (tableName) => {
     }
 };
 
-module.exports = { createTable, deleteTable };
+/**
+ * Create a new database using the given name if does not exists
+ * @param {string} databaseName
+ * @returns
+ */
+const createDatabase = async (databaseName) => {
+    try {
+        const config = {
+            user: process.env.PGUSER,
+            host: process.env.PGHOST,
+            password: process.env.PGPASSWORD,
+            port: process.env.PGPORT,
+        };
+        const res = await pgtools.createdb(config, databaseName);
+        return `Database ${databaseName} successfully created`;
+    } catch (error) {
+        if (error.pgErr.code === "42P04") {
+            console.log(`Database ${databaseName} already exists`);
+            return `Database ${databaseName} already exists`;
+        }
+        throw Error(error.stack);
+    }
+};
+
+module.exports = { createTable, deleteTable, createDatabase };

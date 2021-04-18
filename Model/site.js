@@ -17,8 +17,8 @@ const createSite = async () => {
         const query = `INSERT INTO site (site_id) VALUES ($1);`;
         await client.query(query, [newSiteId]);
         return newSiteId;
-    } catch (err) {
-        throw Error(err.stack);
+    } catch (error) {
+        throw Error(error.stack);
     } finally {
         client.release();
     }
@@ -64,7 +64,7 @@ const deleteSite = async (siteId) => {
             return `Site with id ${siteId} does not exists`;
         }
     } catch (error) {
-        throw Error(err.stack);
+        throw Error(error.stack);
     } finally {
         client.release();
     }

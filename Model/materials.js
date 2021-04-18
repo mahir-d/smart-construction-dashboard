@@ -77,9 +77,9 @@ const createMaterial = async (
             color,
             deliveryDate,
         ]);
-        return `New material with id ${newMaterialId} successfully added to ${siteId} `;
-    } catch (err) {
-        throw Error(err.stack);
+        return newMaterialId;
+    } catch (error) {
+        throw Error(error.stack);
     } finally {
         client.release();
     }
@@ -118,8 +118,8 @@ const updateMaterial = async (
             materialId,
         ]);
         return `Material with id ${materialId} successfully updated for site ${siteId} `;
-    } catch (err) {
-        throw Error(err.stack);
+    } catch (error) {
+        throw Error(error.stack);
     } finally {
         client.release();
     }
@@ -137,9 +137,13 @@ const deleteMaterial = async (siteId, materialId) => {
         const query = `DELETE FROM materials WHERE site_id = $1 and material_id = $2;`;
         const res = await client.query(query, [siteId, materialId]);
         console.log(res.rowCount);
-        return `Material with id ${materialId} successfully deleted for site ${siteId} `;
-    } catch (err) {
-        throw Error(err.stack);
+        if (res.rowCount == 1) {
+            return `Material with id ${materialId} successfully deleted for site ${siteId} `;
+        } else {
+            return `Material with id ${materialId} does not exists for site ${siteId} `;
+        }
+    } catch (error) {
+        throw Error(error.stack);
     } finally {
         client.release();
     }

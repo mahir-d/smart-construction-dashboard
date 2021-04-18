@@ -8,7 +8,7 @@ router.get("/:siteid", async (req, res) => {
     try {
         const siteId = req.params.siteid;
         if (!siteId || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
+            throw Error("Please provide a valid siteId");
         }
         const status = await dbMaterialFunctions.getMaterials(siteId);
         res.status(200).json({ Success: status });

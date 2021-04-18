@@ -1,33 +1,8 @@
-const pgtools = require("pgtools");
 require("dotenv").config();
 const dbSiteFunctions = require("./Model/site");
 const dbFunctions = require("./Model/dbFunctions");
 const seedData = require("./seedData");
 const dbMaterialFunctions = require("./Model/materials");
-
-const config = {
-    user: process.env.PGUSER,
-    host: process.env.PGHOST,
-    password: process.env.PGPASSWORD,
-    port: process.env.PGPORT,
-};
-
-/**
- * Create a new database using the given name if does not exists
- * @param {string} databaseName
- * @returns
- */
-const createDatabase = async (databaseName) => {
-    try {
-        const res = await pgtools.createdb(config, databaseName);
-    } catch (error) {
-        if (error.pgErr.code === "42P04") {
-            console.log(`Database ${databaseName} already exists`);
-            return;
-        }
-        throw Error(error.stack);
-    }
-};
 
 /**
  * Seeds the Prod Database with the given data
@@ -63,11 +38,9 @@ const seedDataProdDb = async () => {
 
 const seed = async () => {
     console.log("Seeding the database");
-    await createDatabase(process.env.PGDATABASE);
-    await createDatabase(process.env.PGTESTDATABASE);
+    await dbFunctions.createDatabase(process.env.PGDATABASE);
     await dbFunctions.deleteTable("site");
     await dbFunctions.deleteTable("materials");
-
     await dbFunctions.createTable("site");
     await dbFunctions.createTable("materials");
     await seedDataProdDb();
