@@ -8,7 +8,7 @@ router.get("/:siteid", async (req, res) => {
     try {
         const siteId = req.params.siteid;
         if (!siteId || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
+            throw Error("Please provide a valid siteId");
         }
         const status = await dbMaterialFunctions.getMaterials(siteId);
         res.status(200).json({ Success: status });
@@ -55,11 +55,16 @@ router.post("/", async (req, res) => {
             deliveryDate: deliveryDate ? deliveryDate : null,
         };
 
-        const status = await dbMaterialFunctions.createMaterial({
-            ...materialObj,
-        });
+        const status = await dbMaterialFunctions.createMaterial(
+            materialObj.siteId,
+            materialObj.name,
+            materialObj.volume,
+            materialObj.cost,
+            materialObj.color,
+            materialObj.deliveryDate
+        );
 
-        res.status(200).json({ Success: status });
+        res.status(200).json({ Data: status });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -103,9 +108,15 @@ router.put("/", async (req, res) => {
             deliveryDate: deliveryDate ? deliveryDate : null,
         };
 
-        const status = await dbMaterialFunctions.updateMaterial({
-            ...materialObj,
-        });
+        const status = await dbMaterialFunctions.updateMaterial(
+            materialObj.siteId,
+            materialObj.materialId,
+            materialObj.name,
+            materialObj.volume,
+            materialObj.cost,
+            materialObj.color,
+            materialObj.deliveryDate
+        );
 
         res.status(200).json({ Success: status });
     } catch (error) {
@@ -123,10 +134,10 @@ router.delete("/", async (req, res) => {
             throw Error("Please provide a valid materialId to delete");
         }
 
-        const status = await dbMaterialFunctions.deleteMaterial({
+        const status = await dbMaterialFunctions.deleteMaterial(
             siteId,
-            materialId,
-        });
+            materialId
+        );
         res.status(200).json({ Success: status });
     } catch (error) {
         res.status(400).json({ Error: error.message });
