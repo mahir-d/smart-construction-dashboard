@@ -10,11 +10,20 @@
 </p>
 
 > Smart dashboard to add, edit, delete a catlog of materials
+> Provides the following functionalities:
+> Fetch the current list of site
+> Fetch the current list of materials for the current site
+> Allow the user to create, edit, and delete materials for a particular site
+> Display the total cost of all materials for a particular site
+
 
 ### 🏠 [Homepage](https://github.com/mahir-d/smart-construction-dashboard#readme)
 
-## Install
+#Technologies
 
+
+## Install
+Execute the following command to load all the project dependencies
 ```sh
 npm install
 ```
@@ -30,8 +39,9 @@ PGUSER=mahirdhall
 PGPASSWORD=null
 PGPORT=5432
 ```
-I have two database set up for testing and production enviroment.
-Below are sample values for the required variables
+I have two databases set up for testing and production enviroment.
+Below are sample values for the required variables. You can provide
+name to both the database and Port number based on your needs
 ```dosini
 PGDATABASE=prodDatabase
 PGTESTDATABASE=testDatabase
@@ -40,7 +50,7 @@ PORT=3001
 
 ## Seed Command
 To seed the Prouction database execute the following
-command after executing the installation command and setting up the project
+command after executing the [installation][#Install] command and [setting up][#Set up] the project
 
 ```sh
 npm run seed
@@ -60,8 +70,8 @@ npm run test
 ```
 
 ## API documentation
-To look up the API documentation, please start the local sever by executing the run command
-and then redirect to the follwing url by adding the port number 
+To look up the API documentation, please start the local sever by executing the [run command][#Run]
+and then redirect to the follwing url by adding the port number mentioned in the .env file
 ``` url
 http://localhost:{port}/api-docs
 ```
