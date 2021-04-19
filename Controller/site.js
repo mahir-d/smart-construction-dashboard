@@ -8,8 +8,8 @@ const uuidv4 = require("uuid");
 
 router.get("/", async (req, res) => {
     try {
-        const status = await dbSiteFunctions.getAllSites();
-        res.status(200).json({ Data: status });
+        const response = await dbSiteFunctions.getAllSites();
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -17,8 +17,8 @@ router.get("/", async (req, res) => {
 
 router.get("/createsite", async (req, res) => {
     try {
-        const status = await dbSiteFunctions.createSite();
-        res.status(200).json({ Data: status });
+        const response = await dbSiteFunctions.createSite();
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -30,11 +30,8 @@ router.delete("/deletesite", async (req, res) => {
         if (!siteId || !uuidv4.validate(siteId)) {
             throw Error("Please provide a valid siteId to delete");
         }
-        if (siteId === undefined || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
-        }
-        const status = await dbSiteFunctions.deleteSite(siteId);
-        res.status(200).json({ Success: status });
+        const response = await dbSiteFunctions.deleteSite(siteId);
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }

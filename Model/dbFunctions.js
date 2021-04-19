@@ -75,7 +75,6 @@ const createDatabase = async (databaseName) => {
         return `Database ${databaseName} successfully created`;
     } catch (error) {
         if (error.pgErr.code === "42P04") {
-            console.log(`Database ${databaseName} already exists`);
             return `Database ${databaseName} already exists`;
         }
         throw Error(error.stack);

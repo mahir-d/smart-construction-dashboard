@@ -17,7 +17,7 @@ const getMaterials = async (siteId) => {
 
     try {
         const res = await client.query(query, [siteId]);
-        console.log(res.rows);
+
         return res.rows;
     } catch (error) {
         throw Error(error.stack);
@@ -136,7 +136,7 @@ const deleteMaterial = async (siteId, materialId) => {
     try {
         const query = `DELETE FROM materials WHERE site_id = $1 and material_id = $2;`;
         const res = await client.query(query, [siteId, materialId]);
-        console.log(res.rowCount);
+
         if (res.rowCount == 1) {
             return `Material with id ${materialId} successfully deleted for site ${siteId} `;
         } else {

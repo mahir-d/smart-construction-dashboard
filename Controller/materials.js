@@ -10,8 +10,8 @@ router.get("/:siteid", async (req, res) => {
         if (!siteId || !uuidv4.validate(siteId)) {
             throw Error("Please provide a valid siteId");
         }
-        const status = await dbMaterialFunctions.getMaterials(siteId);
-        res.status(200).json({ Success: status });
+        const response = await dbMaterialFunctions.getMaterials(siteId);
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -21,10 +21,10 @@ router.get("/cost/:siteid", async (req, res) => {
     try {
         const siteId = req.params.siteid;
         if (!siteId || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
+            throw Error("Please provide a valid siteId");
         }
-        const status = await dbMaterialFunctions.getCost(siteId);
-        res.status(200).json({ Success: status });
+        const response = await dbMaterialFunctions.getCost(siteId);
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -34,12 +34,12 @@ router.post("/", async (req, res) => {
     try {
         const { siteId, name, volume, cost, color, deliveryDate } = req.body;
         if (!siteId || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
+            throw Error("Please provide a valid siteId");
         }
-        if (!volume) {
+        if (!volume || isNaN(volume) || volume < 0) {
             throw Error("Please provide a volume for the material");
         }
-        if (!cost) {
+        if (!cost || isNaN(cost) || cost < 0) {
             throw Error("Please provide a cost for the material");
         }
         if (!color) {
@@ -55,7 +55,7 @@ router.post("/", async (req, res) => {
             deliveryDate: deliveryDate ? deliveryDate : null,
         };
 
-        const status = await dbMaterialFunctions.createMaterial(
+        const response = await dbMaterialFunctions.createMaterial(
             materialObj.siteId,
             materialObj.name,
             materialObj.volume,
@@ -64,7 +64,7 @@ router.post("/", async (req, res) => {
             materialObj.deliveryDate
         );
 
-        res.status(200).json({ Data: status });
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -82,10 +82,10 @@ router.put("/", async (req, res) => {
             deliveryDate,
         } = req.body;
         if (!siteId || !uuidv4.validate(siteId)) {
-            throw Error("Please provide a valid siteId to delete");
+            throw Error("Please provide a valid siteId to update");
         }
         if (!materialId || !uuidv4.validate(materialId)) {
-            throw Error("Please provide a valid materialId to delete");
+            throw Error("Please provide a valid materialId to update");
         }
         if (!volume || isNaN(volume) || volume < 0) {
             throw Error("Please provide a valid volume for the material");
@@ -103,12 +103,12 @@ router.put("/", async (req, res) => {
             materialId: materialId,
             name: name ? name : null,
             volume: parseFloat(volume),
-            cost: parseFloat(cost.replace(/\,/g, "")),
+            cost: parseFloat(String(cost).replace(/\,/g, "")),
             color: color,
             deliveryDate: deliveryDate ? deliveryDate : null,
         };
 
-        const status = await dbMaterialFunctions.updateMaterial(
+        const response = await dbMaterialFunctions.updateMaterial(
             materialObj.siteId,
             materialObj.materialId,
             materialObj.name,
@@ -118,7 +118,7 @@ router.put("/", async (req, res) => {
             materialObj.deliveryDate
         );
 
-        res.status(200).json({ Success: status });
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
@@ -134,11 +134,11 @@ router.delete("/", async (req, res) => {
             throw Error("Please provide a valid materialId to delete");
         }
 
-        const status = await dbMaterialFunctions.deleteMaterial(
+        const response = await dbMaterialFunctions.deleteMaterial(
             siteId,
             materialId
         );
-        res.status(200).json({ Success: status });
+        res.status(200).json({ data: response });
     } catch (error) {
         res.status(400).json({ Error: error.message });
     }
