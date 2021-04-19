@@ -1,3 +1,6 @@
+/**
+ * This file contains json data to seed the database
+ */
 module.exports = [
     {
         name: "sand",

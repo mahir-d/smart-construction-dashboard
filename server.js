@@ -1,3 +1,6 @@
+/**
+ * This file contains logic to start a local development server
+ */
 const app = require("./app");
 require("dotenv").config();
 const port = process.env.PORT;

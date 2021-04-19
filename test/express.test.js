@@ -1,3 +1,6 @@
+/**
+ * This is the test file for testing the express API routes
+ */
 require("dotenv").config();
 
 const app = require("../app");

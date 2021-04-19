@@ -1,3 +1,6 @@
+/**
+ * This is the test file to test backend database functions
+ */
 const dbFunctions = require("../Model/dbFunctions");
 const dbSiteFunctions = require("../Model/site");
 const dbMaterialFunctions = require("../Model/materials");

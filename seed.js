@@ -1,3 +1,6 @@
+/**
+ * This file contains logic to seed the Production database
+ */
 require("dotenv").config();
 const dbSiteFunctions = require("./Model/site");
 const dbFunctions = require("./Model/dbFunctions");
