@@ -17,11 +17,32 @@
 
 ## Introduciton
 Provides the following functionalities:
- * Fetch the current list of site
+ * Fetch the current list of construction sites
  * Fetch the current list of materials for the current site
  * Allow the user to create, edit, and delete materials for a particular site 
  * Display the total cost of all materials for a particular site
 
+## Database Schema
+Since each material was unique for a particular construction site and not shared among other sites,
+I decided to create two tables: 
+
+1. site - Holds unique uuid for construction sites in the database 
+
+```
+site_id 
+-------------
+Content Cell 
+Content Cell 
+```
+
+2. materials - represents material and site mapping
+
+```
+site_id       | material_id  | volume | cost   | color | delivery_date |
+------------- | -------------|--------|--------|-------|---------------|
+uuid.         | uuid         | number | number | string| datetime      |
+
+``` 
 
 ## Install
 Execute the following command to load all the project dependencies
