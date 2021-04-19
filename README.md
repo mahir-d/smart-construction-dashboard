@@ -17,7 +17,7 @@
 
 ## Introduciton
 Provides the following functionalities:
- * Fetch the current list of construction sites
+ * Allow the user to create, delete and fetch construction sites
  * Fetch the current list of materials for the current site
  * Allow the user to create, edit, and delete materials for a particular site 
  * Display the total cost of all materials for a particular site
