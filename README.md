@@ -94,7 +94,7 @@ npm run test
 
 ## API documentation
 To look up the API documentation, please start the local sever by executing the [run command](#run)
-and then redirect to the follwing url by adding the port number mentioned in the .env file
+and then redirect to the follwing url by adding the port number mentioned in the [.env file](#set-up)
 ``` url
 http://localhost:{port}/api-docs
 ```
