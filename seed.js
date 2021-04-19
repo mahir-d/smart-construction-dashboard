@@ -16,9 +16,14 @@ const seedDataProdDb = async () => {
         }
 
         for (const siteId of sitesArr) {
-            for (const material of seedData) {
+            let materialSet = new Set();
+            let i = 0;
+            while (i < 5) {
                 let idx = Math.floor(Math.random() * 10);
-
+                if (materialSet.has(idx)) {
+                    continue;
+                }
+                materialSet.add(idx);
                 const materialObj = seedData[idx];
 
                 const status = await dbMaterialFunctions.createMaterial(
@@ -29,6 +34,7 @@ const seedDataProdDb = async () => {
                     materialObj.color,
                     materialObj.deliveryDate
                 );
+                i++;
             }
         }
     } catch (error) {
