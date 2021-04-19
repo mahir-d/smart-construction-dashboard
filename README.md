@@ -23,6 +23,7 @@ npm install
 Create a `.env` file in the root directory of your project. Add
 environment-specific variables on new lines in the form of `NAME=VALUE`.
 Requried varibales and sample values based on Postgresql configurations
+
 ```dosini
 PGHOST=localhost
 PGUSER=mahirdhall
@@ -34,31 +35,35 @@ Below are sample values for the required variables
 ```dosini
 PGDATABASE=prodDatabase
 PGTESTDATABASE=testDatabase
-PORT=3001```
-
-
+PORT=3001
+```
 
 ## Seed Command
+To seed the Prouction database execute the following
+command after executing the installation command and setting up the project
 
 ```sh
 npm run seed
 ```
 
 ## Run
+Execute the following command to start the sever at the PORT number mentioned
+in the .env file
 ``` sh
 npm start
 ```
 
 ## Run tests
-
+Run the following command to seed and run the Test database in testing enviroment
 ```sh
 npm run test
 ```
 
 ## API documentation
-
-``` 
-localhost:port/api-docs
+To look up the API documentation, please start the local sever by executing the run command
+and then redirect to the follwing url by adding the port number 
+``` url
+http://localhost:{port}/api-docs
 ```
 
 ## Author
@@ -71,14 +76,8 @@ localhost:port/api-docs
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/mahir-d/smart-construction-dashboard/issues). You can also take a look at the [contributing guide](https://github.com/mahir-d/smart-construction-dashboard/blob/master/CONTRIBUTING.md).
 
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
 ## 📝 License
 
 Copyright © 2021 [Mahir Dhall](https://github.com/mahir-d).<br />
 This project is [ISC](https://github.com/mahir-d/smart-construction-dashboard/blob/master/LICENSE) licensed.
 
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
