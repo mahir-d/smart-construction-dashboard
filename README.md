@@ -19,6 +19,25 @@
 npm install
 ```
 
+### Set up
+Create a `.env` file in the root directory of your project. Add
+environment-specific variables on new lines in the form of `NAME=VALUE`.
+Requried varibales and sample values based on Postgresql configurations
+```dosini
+PGHOST=localhost
+PGUSER=mahirdhall
+PGPASSWORD=null
+PGPORT=5432
+```
+I have two database set up for testing and production enviroment.
+Below are sample values for the required variables
+```dosini
+PGDATABASE=prodDatabase
+PGTESTDATABASE=testDatabase
+PORT=3001```
+
+
+
 ## Seed Command
 
 ```sh
