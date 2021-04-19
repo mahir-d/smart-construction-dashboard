@@ -36,6 +36,12 @@ npm start
 npm run test
 ```
 
+## API documentation
+
+``` 
+localhost:port/api-docs
+```
+
 ## Author
 
 👤 **Mahir Dhall**
