@@ -7,9 +7,6 @@
   <a href="https://github.com/mahir-d/smart-construction-dashboard/graphs/commit-activity" target="_blank">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" />
   </a>
-  <a href="https://github.com/mahir-d/smart-construction-dashboard/blob/master/LICENSE" target="_blank">
-    <img alt="License: ISC" src="https://img.shields.io/github/license/mahir-d/smart-construction-dashboard" />
-  </a>
 </p>
 
 > Smart dashboard to add, edit, delete a catlog of materials
@@ -22,10 +19,15 @@
 npm install
 ```
 
-## Usage
+## Seed Command
 
 ```sh
 npm run seed
+```
+
+## Run
+``` sh
+npm start
 ```
 
 ## Run tests
