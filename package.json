@@ -37,7 +37,8 @@
         "testEnvironment": "node",
         "coveragePathIgnorePatterns": [
             "/node_modules/",
-            "app.js"
+            "app.js",
+            "./Model/connection.js"
         ]
     }
 }

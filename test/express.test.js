@@ -338,7 +338,6 @@ describe("Tests CRUD routes for materials", () => {
 });
 
 afterAll(async () => {
-    // or this:
     await dbFunctions.deleteTable("site");
     await dbFunctions.deleteTable("materials");
     pool.end();

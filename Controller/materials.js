@@ -4,6 +4,23 @@ const dbMaterialFunctions = require("../Model/materials");
 const uuidv4 = require("uuid");
 const { json } = require("express");
 
+/**
+ * @swagger
+ * /materials/:siteid:
+ *  get:
+ *     summary: Returns a list of all materials for the given siteId
+ *     tags:
+ *      - materials API
+ *     parameters:
+ *      - in: query
+ *        name: siteId
+ *        required: true
+ *        schema:
+ *          type: string
+ *     responses:
+ *      '200':
+ *          description: A successful response with list of material objects
+ */
 router.get("/:siteid", async (req, res) => {
     try {
         const siteId = req.params.siteid;
@@ -17,6 +34,23 @@ router.get("/:siteid", async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /materials/cost/:siteid:
+ *  get:
+ *     summary: Returns the total cost of all materials for the given siteId
+ *     tags:
+ *      - materials API
+ *     parameters:
+ *      - in: query
+ *        name: siteId
+ *        required: true
+ *        schema:
+ *          type: string
+ *     responses:
+ *      '200':
+ *          description: A successful response with list of material objects
+ */
 router.get("/cost/:siteid", async (req, res) => {
     try {
         const siteId = req.params.siteid;
@@ -30,6 +64,48 @@ router.get("/cost/:siteid", async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /materials/:
+ *  post:
+ *     summary: creates a new material for the given siteId
+ *     tags:
+ *      - materials API
+ *     parameters:
+ *      - in: body
+ *        name: siteId
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: name
+ *        required: false
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: volume
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: cost
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: color
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: deliveryDate
+ *        required: false
+ *        schema:
+ *          type: string
+ *     responses:
+ *         '200':
+ *             description: returns unique uuid for the newly created material
+ */
 router.post("/", async (req, res) => {
     try {
         const { siteId, name, volume, cost, color, deliveryDate } = req.body;
@@ -70,6 +146,53 @@ router.post("/", async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /materials/:
+ *  put:
+ *     summary: updates the given material for the given siteId
+ *     tags:
+ *      - materials API
+ *     parameters:
+ *      - in: body
+ *        name: siteId
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: materialId
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: name
+ *        required: false
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: volume
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: cost
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: color
+ *        required: true
+ *        schema:
+ *          type: number
+ *      - in: body
+ *        name: deliveryDate
+ *        required: false
+ *        schema:
+ *          type: string
+ *     responses:
+ *         '200':
+ *             description: Successfully updated the site with the given id
+ */
 router.put("/", async (req, res) => {
     try {
         const {
@@ -124,6 +247,28 @@ router.put("/", async (req, res) => {
     }
 });
 
+/**
+ * @swagger
+ * /materials/:
+ *  put:
+ *     summary: creates a new material for the given siteId
+ *     tags:
+ *      - materials API
+ *     parameters:
+ *      - in: body
+ *        name: siteId
+ *        required: true
+ *        schema:
+ *          type: string
+ *      - in: body
+ *        name: materialId
+ *        required: true
+ *        schema:
+ *          type: string
+ *     responses:
+ *         '200':
+ *             description: Successfully deleted the given material for the given site
+ */
 router.delete("/", async (req, res) => {
     try {
         const { siteId, materialId } = req.body;
