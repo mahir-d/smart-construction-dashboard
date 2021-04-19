@@ -72,7 +72,7 @@ PORT=3001
 
 ## Seed Command
 To seed the Prouction database execute the following
-command after executing the [installation][#Install] command and [setting up][#Set up] the project
+command after executing the [installation][#install] command and [setting up][#set-up] the project
 
 ```sh
 npm run seed
@@ -92,7 +92,7 @@ npm run test
 ```
 
 ## API documentation
-To look up the API documentation, please start the local sever by executing the [run command][#Run]
+To look up the API documentation, please start the local sever by executing the [run command][#run]
 and then redirect to the follwing url by adding the port number mentioned in the .env file
 ``` url
 http://localhost:{port}/api-docs
