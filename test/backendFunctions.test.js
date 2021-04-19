@@ -6,10 +6,7 @@ const pool = require("../Model/connection");
 require("dotenv").config();
 
 beforeAll(async () => {
-    // console.log(`NODE_ENV changed to ${process.env.NODE_ENV}`);
     await dbFunctions.createDatabase(process.env.PGTESTDATABASE);
-
-    // console.log(`Created New database ${process.env.PGTESTDATABASE}`);
 });
 
 test("Tests Table creation: ", async () => {
@@ -45,7 +42,7 @@ describe("Tests create, read and delete backend function for a site", () => {
 
     describe("Tests fetching of the list of sites: ", () => {
         let sitesArr = [];
-        beforeEach(async () => {
+        beforeAll(async () => {
             let newSiteId = await dbSiteFunctions.createSite();
             sitesArr.push(newSiteId);
             newSiteId = await dbSiteFunctions.createSite();
@@ -194,6 +191,5 @@ test("Tests Table deletion for non existing tables: ", async () => {
 });
 
 afterAll(async () => {
-    // or this:
-    pool.end().then(() => console.log("pool has ended"));
+    pool.end();
 });
