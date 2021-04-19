@@ -11,10 +11,11 @@
 
 > Smart dashboard to add, edit, delete a catlog of materials
 > Provides the following functionalities:
-> Fetch the current list of site
-> Fetch the current list of materials for the current site
-> Allow the user to create, edit, and delete materials for a particular site
-> Display the total cost of all materials for a particular site
+Markup : * Fetch the current list of site
+         * Fetch the current list of materials for the current site
+         * Allow the user to create, edit, and delete materials for a particular site 
+         * Display the total cost of all materials for a particular site
+
 
 
 ### 🏠 [Homepage](https://github.com/mahir-d/smart-construction-dashboard#readme)
