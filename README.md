@@ -38,9 +38,9 @@ Content Cell
 2. materials - represents material and site mapping
 
 ```
-site_id       | material_id  | volume | cost   | color | delivery_date |
-------------- | -------------|--------|--------|-------|---------------|
-uuid.         | uuid         | number | number | string| datetime      |
+site_id       | material_id  | volume | cost   | color | delivery_date 
+------------- | -------------|--------|--------|-------|---------------
+uuid          | uuid         | number | number | string| datetime      
 
 ``` 
 
