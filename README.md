@@ -81,7 +81,7 @@ npm run seed
 
 ## Run
 Execute the following command to start the sever at the PORT number mentioned
-in the .env file
+in the [.env file](#set-up)
 ``` sh
 npm start
 ```
