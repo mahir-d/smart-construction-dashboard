@@ -31,8 +31,8 @@ I decided to create two tables:
 ```
 site_id 
 -------------
-Content Cell 
-Content Cell 
+uuid
+uuid
 ```
 
 2. materials - represents material and site mapping
